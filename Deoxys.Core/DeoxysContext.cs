@@ -16,5 +16,8 @@ namespace Deoxys.Core
         public ModuleDefinition Module { get; set; }
         public PEFile PeFile { get; set; }
         public ILogger Logger { get; set; }
+        
+        public PESection Nasha0 { get; set; }
+        public PESection Nasha1 { get; set; }
     }
 }

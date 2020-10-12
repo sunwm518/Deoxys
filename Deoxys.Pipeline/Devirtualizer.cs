@@ -14,7 +14,7 @@ namespace Deoxys.Pipeline
             Ctx = ctx;
             DevirtualizationStages = new List<IDevirtualizationStage>()
             {
-                new MethodDetection()
+                new SectionDetection()
             };
         }
 
