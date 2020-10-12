@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deoxys", "Deoxys\Deoxys.csproj", "{BFE9EAB5-B92C-4E2E-B32C-EE0B422FE021}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deoxys.Core", "Deoxys.Core\Deoxys.Core.csproj", "{81574300-A8A1-4C63-B125-C04037562676}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deoxys.Pipeline", "Deoxys.Pipeline\Deoxys.Pipeline.csproj", "{931E5C3A-2441-4BE2-A916-5DA5FEE9DAD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{BFE9EAB5-B92C-4E2E-B32C-EE0B422FE021}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFE9EAB5-B92C-4E2E-B32C-EE0B422FE021}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFE9EAB5-B92C-4E2E-B32C-EE0B422FE021}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81574300-A8A1-4C63-B125-C04037562676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81574300-A8A1-4C63-B125-C04037562676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81574300-A8A1-4C63-B125-C04037562676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81574300-A8A1-4C63-B125-C04037562676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{931E5C3A-2441-4BE2-A916-5DA5FEE9DAD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{931E5C3A-2441-4BE2-A916-5DA5FEE9DAD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{931E5C3A-2441-4BE2-A916-5DA5FEE9DAD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{931E5C3A-2441-4BE2-A916-5DA5FEE9DAD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

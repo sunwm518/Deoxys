@@ -1,3 +1,9 @@
 ﻿/Deoxys/obj
 /Deoxys/bin
 /.idea
+/Deoxys.Core/obj/
+/Deoxys.Pipeline/obj/
+/Deoxys.Core/bin/
+/Deoxys.Pipeline/bin/
+/packages/
+/Deoxys.sln.DotSettings.user
