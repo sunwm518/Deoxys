@@ -14,7 +14,7 @@ namespace Deoxys.Pipeline
             Ctx = ctx;
             DevirtualizationStages = new List<IDevirtualizationStage>()
             {
-                new MethodDetection()
+                new SectionDetection()
             };
         }
 
@@ -22,9 +22,9 @@ namespace Deoxys.Pipeline
         {
             foreach (var stage in DevirtualizationStages)
             {
-                //Ctx.Logger.Info($"Executing Devirtualization Stage {stage.Name}...");
+                Ctx.Logger.Info($"Executing Devirtualization Stage {stage.Name}...");
                 stage.Execute(Ctx);
-                //Ctx.Logger.Success($"Executed Devirtualization Stage {stage.Name}!");
+                Ctx.Logger.Success($"Executed Devirtualization Stage {stage.Name}!");
             }
         }
 
