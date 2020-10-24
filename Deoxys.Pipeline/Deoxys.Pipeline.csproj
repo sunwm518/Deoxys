@@ -54,6 +54,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="DevirtualizationStages\CfgDetection.cs" />
         <Compile Include="DevirtualizationStages\MethodDetection.cs" />
         <Compile Include="DevirtualizationStages\SectionDetection.cs" />
         <Compile Include="Devirtualizer.cs" />

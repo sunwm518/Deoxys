@@ -9,8 +9,9 @@ namespace Deoxys.Pipeline.DevirtualizationStages
     public class MethodDetection : IDevirtualizationStage
     {
         public string Name => nameof(MethodDetection);
-        public void Execute(DeoxysContext context)
+        public bool Execute(DeoxysContext context)
         {
+            return true;
         }
     }
 }

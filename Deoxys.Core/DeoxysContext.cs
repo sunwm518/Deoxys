@@ -19,5 +19,7 @@ namespace Deoxys.Core
         
         public PESection Nasha0 { get; set; }
         public PESection Nasha1 { get; set; }
+        public PESection Nasha2 { get; set; }
+        public FieldDefinition Cfg { get; set; }
     }
 }
