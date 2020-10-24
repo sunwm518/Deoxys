@@ -14,7 +14,8 @@ namespace Deoxys
         public static void Main(string[] args)
         {
             Console.Title = $"Deoxys - Version {CurrentVersion}";
-            var logger = new ConsoleLogger();
+            ILogger logger = new ConsoleLogger();
+            
             if (args.Length == 0)
             { 
                 logger.Error("Use <Deoxys.exe> --help");
@@ -24,6 +25,7 @@ namespace Deoxys
 
             var options = Parser.Default.ParseArguments<ParseOptions>(args).WithNotParsed(q =>
             {
+                logger.Info($"Usage : <Deoxys.exe> <Input File> <Settings>");
                 Console.ReadLine();
                 Environment.Exit(0);
             });
