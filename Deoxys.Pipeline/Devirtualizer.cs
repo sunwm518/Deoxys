@@ -6,18 +6,19 @@ namespace Deoxys.Pipeline
 {
     public class Devirtualizer
     {
-        public DeoxysContext Ctx { get; set; }
-        public IList<IDevirtualizationStage> DevirtualizationStages { get; }
-
         public Devirtualizer(DeoxysContext ctx)
         {
             Ctx = ctx;
-            DevirtualizationStages = new List<IDevirtualizationStage>()
+            DevirtualizationStages = new List<IDevirtualizationStage>
             {
                 new SectionDetection(),
-                new CfgDetection()
+                new CfgDetection(),
+                new MethodDetection()
             };
         }
+
+        public DeoxysContext Ctx { get; set; }
+        public IList<IDevirtualizationStage> DevirtualizationStages { get; }
 
         public void Devirtualize()
         {

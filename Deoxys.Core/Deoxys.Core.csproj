@@ -59,6 +59,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="DeoxysContext.cs" />
+        <Compile Include="DeoxysMethodInfo.cs" />
         <Compile Include="DeoxysOptions.cs" />
         <Compile Include="IDevirtualizationStage.cs" />
         <Compile Include="ILogger.cs" />
