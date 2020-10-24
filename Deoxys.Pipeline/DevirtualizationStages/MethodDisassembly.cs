@@ -16,9 +16,8 @@ namespace Deoxys.Pipeline.DevirtualizationStages
         public string Name => nameof(MethodDisassembly);
         public bool Execute(DeoxysContext context)
         {
-            context.DevirtualizedMethods = DisassembleAllMethods(context);
-            return context.DevirtualizedMethods.Count == context.VirtualizedMethods.Count;
-            //TODO: fixups ig
+            context.DisassembledVirtualizedMethods = DisassembleAllMethods(context);
+            return context.DisassembledVirtualizedMethods.Count == context.VirtualizedMethods.Count;
         }
 
         public List<NashaMethod> DisassembleAllMethods(DeoxysContext context)

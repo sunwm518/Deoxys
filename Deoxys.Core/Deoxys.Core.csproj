@@ -73,6 +73,7 @@
         <Compile Include="Disassembly\NashaMethodDisassembler.cs" />
         <Compile Include="Disassembly\NashaOperandResolver.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Recompiling\NashaRecompiler.cs" />
     </ItemGroup>
     <ItemGroup>
       <None Include="packages.config" />

@@ -15,7 +15,8 @@ namespace Deoxys.Pipeline
                 new CfgDetection(),
                 new MethodDetection(),
                 new OpCodeDetection(),
-                new MethodDisassembly()
+                new MethodDisassembly(),
+                new MethodRecompiler()
             };
         }
 
@@ -44,6 +45,7 @@ namespace Deoxys.Pipeline
 
         public void Save()
         {
+            Ctx.Module.Write(Ctx.Options.OutPath);
         }
     }
 }
