@@ -14,6 +14,7 @@ namespace Deoxys.Core
             Logger = logger;
             VirtualizedMethods = new List<NashaMethodInfo>();
             DeoxysOpCodes = new Dictionary<int, NashaOpCode>();
+            DevirtualizedMethods = new List<NashaMethod>();
         }
 
         public DeoxysOptions Options { get; set; }
@@ -27,5 +28,6 @@ namespace Deoxys.Core
         public FieldDefinition Cfg { get; set; }
         public List<NashaMethodInfo> VirtualizedMethods { get; set; }
         public Dictionary<int,NashaOpCode> DeoxysOpCodes { get; set; }
+        public List<NashaMethod> DevirtualizedMethods { get; set; }
     }
 }

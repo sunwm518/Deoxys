@@ -2,7 +2,6 @@
 {
     public class NashaMethodDisassembler
     {
-        public NashaMethodInfo MethodInfo { get; }
         public DeoxysContext Context { get; }
         public NashaInstructionDisassembler InstructionDisassembler { get; set; }
 
