@@ -26,8 +26,25 @@ namespace Deoxys
 
         public static void PrintInfo(DeoxysContext Context)
         {
-            Console.WriteAscii("Deoxys", Color.Red);
+            //Console.WriteAscii("Deoxys", Color.Red);
+            foreach (var line in @"
+______                         
+|  _  \                        
+| | | |___  _____  ___   _ ___ 
+| | | / _ \/ _ \ \/ / | | / __|
+| |/ /  __/ (_) >  <| |_| \__ \
+|___/ \___|\___/_/\_\\__, |___/
+                      __/ |    
+                     |___/     ".Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                WriteLineMiddle(line,Color.Red);
+            }
             Context.Logger.Success($"Loaded file {Context.Module.Name}");
+        }
+
+        private static void WriteLineMiddle(string message, Color color)
+        {
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (message.Length / 2)) + "}", message),color);
         }
     }
 }
