@@ -26,7 +26,6 @@ namespace Deoxys
 
         public static void PrintInfo(DeoxysContext Context)
         {
-            //Console.WriteAscii("Deoxys", Color.Red);
             foreach (var line in @"
 ______                         
 |  _  \                        
