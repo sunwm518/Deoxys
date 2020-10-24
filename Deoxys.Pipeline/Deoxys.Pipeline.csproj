@@ -56,6 +56,8 @@
     <ItemGroup>
         <Compile Include="DevirtualizationStages\CfgDetection.cs" />
         <Compile Include="DevirtualizationStages\MethodDetection.cs" />
+        <Compile Include="DevirtualizationStages\MethodDisassembly.cs" />
+        <Compile Include="DevirtualizationStages\OpCodeDetection.cs" />
         <Compile Include="DevirtualizationStages\SectionDetection.cs" />
         <Compile Include="Devirtualizer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />

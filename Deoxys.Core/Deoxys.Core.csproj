@@ -58,12 +58,20 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="DeoxysContext.cs" />
-        <Compile Include="DeoxysMethodInfo.cs" />
-        <Compile Include="DeoxysOptions.cs" />
-        <Compile Include="IDevirtualizationStage.cs" />
-        <Compile Include="ILogger.cs" />
-        <Compile Include="ParseOptions.cs" />
+        <Compile Include="Architecture\NashaCode.cs" />
+        <Compile Include="Architecture\NashaInstruction.cs" />
+        <Compile Include="Architecture\NashaMethod.cs" />
+        <Compile Include="Architecture\NashaMethodBody.cs" />
+        <Compile Include="Architecture\NashaMethodInfo.cs" />
+        <Compile Include="Architecture\NashaOpCode.cs" />
+        <Compile Include="Deoxys\DeoxysContext.cs" />
+        <Compile Include="Deoxys\DeoxysOptions.cs" />
+        <Compile Include="Deoxys\IDevirtualizationStage.cs" />
+        <Compile Include="Deoxys\ILogger.cs" />
+        <Compile Include="Deoxys\ParseOptions.cs" />
+        <Compile Include="Disassembly\NashaInstructionDisassembler.cs" />
+        <Compile Include="Disassembly\NashaMethodDisassembler.cs" />
+        <Compile Include="Disassembly\NashaOperandResolver.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>

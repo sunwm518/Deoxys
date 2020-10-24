@@ -2,11 +2,11 @@
 
 namespace Deoxys.Core
 {
-    public class DeoxysMethodInfo
+    public class NashaMethodInfo
     {
-        private readonly int _methodKey;
+        public readonly int _methodKey;
 
-        public DeoxysMethodInfo(MethodDefinition method, int methodKey)
+        public NashaMethodInfo(MethodDefinition method, int methodKey)
         {
             _methodKey = methodKey;
             Method = method;

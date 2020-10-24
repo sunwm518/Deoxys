@@ -13,7 +13,9 @@ namespace Deoxys.Pipeline
             {
                 new SectionDetection(),
                 new CfgDetection(),
-                new MethodDetection()
+                new MethodDetection(),
+                new OpCodeDetection(),
+                new MethodDisassembly()
             };
         }
 

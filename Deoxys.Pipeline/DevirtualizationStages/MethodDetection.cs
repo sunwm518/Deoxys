@@ -18,20 +18,22 @@ namespace Deoxys.Pipeline.DevirtualizationStages
         private void MapMethods(DeoxysContext context)
         {
             foreach (var type in context.Module.GetAllTypes())
-            foreach (var method in type.Methods.Where(q => q.IsIL && q.CilMethodBody.Instructions.Count >= 7))
             {
-                var instructions = method.CilMethodBody.Instructions;
-                if (instructions.First().OpCode == CilOpCodes.Newobj &&
-                    ((IMethodDescriptor) instructions.First().Operand).DeclaringType !=
-                    context.Cfg.Signature.FieldType.GetUnderlyingTypeDefOrRef())
+                foreach (var method in type.Methods.Where(q => q.IsIL && q.CilMethodBody.Instructions.Count >= 7))
                 {
-                    var instructionField = instructions.First(q => q.OpCode == CilOpCodes.Ldsfld);
-                    if (instructionField != null)
+                    var instructions = method.CilMethodBody.Instructions;
+                    if (instructions.First().OpCode == CilOpCodes.Newobj &&
+                        ((IMethodDescriptor) instructions.First().Operand).DeclaringType !=
+                        context.Cfg.Signature.FieldType.GetUnderlyingTypeDefOrRef())
                     {
-                        var index = instructions.IndexOf(instructionField);
-                        var methodKey = instructions[index - 1].GetLdcI4Constant();
-                        context.VirtualizedMethods.Add(new DeoxysMethodInfo(method, methodKey));
-                        context.Logger.Success($"Found Virtualized Method {method.Name} With Key {methodKey}");
+                        var instructionField = instructions.First(q => q.OpCode == CilOpCodes.Ldsfld);
+                        if (instructionField != null)
+                        {
+                            var index = instructions.IndexOf(instructionField);
+                            var methodKey = instructions[index - 1].GetLdcI4Constant();
+                            context.VirtualizedMethods.Add(new NashaMethodInfo(method, methodKey));
+                            context.Logger.Success($"Found Virtualized Method {method.Name} With Key {methodKey}");
+                        }
                     }
                 }
             }

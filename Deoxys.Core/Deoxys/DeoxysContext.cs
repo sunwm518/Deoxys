@@ -12,7 +12,8 @@ namespace Deoxys.Core
             Module = ModuleDefinition.FromFile(options.FilePath);
             PeFile = PEFile.FromFile(options.FilePath);
             Logger = logger;
-            VirtualizedMethods = new List<DeoxysMethodInfo>();
+            VirtualizedMethods = new List<NashaMethodInfo>();
+            DeoxysOpCodes = new Dictionary<int, NashaOpCode>();
         }
 
         public DeoxysOptions Options { get; set; }
@@ -24,6 +25,7 @@ namespace Deoxys.Core
         public PESection Nasha1 { get; set; }
         public PESection Nasha2 { get; set; }
         public FieldDefinition Cfg { get; set; }
-        public List<DeoxysMethodInfo> VirtualizedMethods { get; set; }
+        public List<NashaMethodInfo> VirtualizedMethods { get; set; }
+        public Dictionary<int,NashaOpCode> DeoxysOpCodes { get; set; }
     }
 }
