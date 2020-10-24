@@ -23,6 +23,7 @@ namespace Deoxys.Core.Disassembly
             var instructions = new List<NashaInstruction>();
             InstructionReader.BaseStream.Position = nashaMethod.Parent._methodKey;
             int count = InstructionReader.ReadInt32();
+            Disassembler.Context.Logger.Success($"Disassembling Method {nashaMethod.Parent.Method.Name} With Key {nashaMethod.Parent._methodKey} - Instructions ({count})");
             for (int i = 0; i < count; i++)
             {
                 instructions.Add(DisassembleInstruction());
@@ -30,7 +31,7 @@ namespace Deoxys.Core.Disassembly
             return instructions;
         }
 
-        public NashaInstruction DisassembleInstruction()
+        private NashaInstruction DisassembleInstruction()
         {
             byte code = InstructionReader.ReadByte();
             if (!Disassembler.Context.DeoxysOpCodes.TryGetValue(code, out var opCode))
@@ -39,10 +40,11 @@ namespace Deoxys.Core.Disassembly
             }
             var instruction = new NashaInstruction(opCode);
             instruction.Operand = DisassembleOperand(opCode);
+            Disassembler.Context.Logger.Info($"Disassembled Instruction {instruction}");
             return instruction;
         }
 
-        public object DisassembleOperand(NashaOpCode opCode)
+        private object DisassembleOperand(NashaOpCode opCode)
         {
             switch (opCode.Code)
             {
@@ -51,17 +53,13 @@ namespace Deoxys.Core.Disassembly
                     break;
                 case NashaCode.Ldstr:
                     return Encoding.UTF8.GetString(InstructionReader.ReadBytes(InstructionReader.ReadInt32()));
-                    break;
                 case NashaCode.Call:
                     InstructionReader.ReadInt16();
                     return Disassembler.Context.Module.LookupMember(InstructionReader.ReadInt32());
-                    break;
-                default:
-                    break;
             }
             return null;
         }
-        private static byte[] Decompress(byte[] data)
+        private byte[] Decompress(byte[] data)
         {
             byte[] decompressedArray = null;
             try
@@ -78,10 +76,12 @@ namespace Deoxys.Core.Disassembly
                     decompressedArray = decompressedStream.ToArray();
                 }
             }
-            catch (Exception exception)
+            catch(Exception ex)
             {
+                Disassembler.Context.Logger.Error($"Could not decompress Nasha Section - ({ex})");
+                Console.ReadLine();
+                Environment.Exit(0);
             }
-
             return decompressedArray;
         }
     }

@@ -1,4 +1,6 @@
-﻿namespace Deoxys.Core
+﻿using System.Reflection.Emit;
+
+namespace Deoxys.Core
 {
     public class NashaInstruction
     {
@@ -12,6 +14,13 @@
         {
             OpCode = opCode;
             Operand = operand;
+        }
+
+        public override string ToString()
+        {
+            if (Operand == null)
+                return $"[{OpCode.Code}]";
+            return $"[{OpCode.Code}] - [{Operand}]";
         }
     }
 }

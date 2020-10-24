@@ -18,7 +18,7 @@
             return method;
         }
 
-        public NashaMethodBody DisassembleMethodBody(NashaMethod method)
+        private NashaMethodBody DisassembleMethodBody(NashaMethod method)
         {
             var body = new NashaMethodBody(method);
             body.Instructions = InstructionDisassembler.DisassembleAllInstructions(method);
