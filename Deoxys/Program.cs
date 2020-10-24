@@ -14,9 +14,21 @@ namespace Deoxys
         public static void Main(string[] args)
         {
             Console.Title = $"Deoxys - Version {CurrentVersion}";
-            var options = Parser.Default.ParseArguments<ParseOptions>(args).Value;
-            var deoxysOptions = new DeoxysOptions(args[0], options);
-            var ctx = new DeoxysContext(deoxysOptions, new ConsoleLogger());
+            var logger = new ConsoleLogger();
+            if (args.Length == 0)
+            { 
+                logger.Error("Use <Deoxys.exe> --help");
+                Console.ReadLine();
+                return;
+            }
+
+            var options = Parser.Default.ParseArguments<ParseOptions>(args).WithNotParsed(q =>
+            {
+                Console.ReadLine();
+                Environment.Exit(0);
+            });
+            var deoxysOptions = new DeoxysOptions(args[0], options.Value);
+            var ctx = new DeoxysContext(deoxysOptions,logger);
             PrintInfo(ctx);
             var devirtualizer = new Devirtualizer(ctx);
             devirtualizer.Devirtualize();
