@@ -24,6 +24,7 @@ namespace Deoxys.Core.Recompiling
             {
                 var cilInstruction = RecompileInstruction(instruction);
                 body.Instructions.Add(cilInstruction);
+                Context.Logger.Info($"Recompiled Nasha Instruction {instruction} Into Cil Instruction {cilInstruction}");
             }
             //TODO: Fixups
             return body;
