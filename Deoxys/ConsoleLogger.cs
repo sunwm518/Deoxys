@@ -1,6 +1,7 @@
-﻿using System.Drawing;
-using Colorful;
+﻿using System;
+using System.Drawing;
 using Deoxys.Core;
+using Console = Colorful.Console;
 
 namespace Deoxys
 {
@@ -8,27 +9,28 @@ namespace Deoxys
     {
         public void Success(string message)
         {
-            WriteLine(message, Color.Aqua, "+");
+            WriteCool(message,Color.CornflowerBlue);
         }
 
         public void Error(string message)
         {
-            WriteLine(message, Color.Red, "-");
+            WriteCool(message, Color.Red);
         }
 
         public void Info(string message)
         {
-            WriteLine(message, Color.Gray, "*");
+            WriteCool(message, Color.Gray);
         }
 
         public void Warning(string message)
         {
-            WriteLine(message, Color.Orange, "!");
+            WriteCool(message, Color.Orange);
         }
 
-        private void WriteLine(string message, Color color, string character)
+        private void WriteCool(string message,Color color)
         {
-            Console.WriteLineFormatted("[{0}] {1}", color, Color.White, character, message);
+            Console.WriteFormatted("[{0}] ",color,Color.White,DateTime.Now.ToString("HH:mm:ss"));
+            Console.WriteLine(message + " ",color);
         }
     }
 }

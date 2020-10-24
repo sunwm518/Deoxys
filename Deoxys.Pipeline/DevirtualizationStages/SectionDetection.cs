@@ -15,32 +15,27 @@ namespace Deoxys.Pipeline.DevirtualizationStages
                 q.Name.Contains("1") || q.Name.Contains("2")).ToList();
             if (!peSections.Any())
             {
-                context.Logger.Error("Could not locate any NashaVM sections!");
-                Console.ReadLine();
-                Environment.Exit(0);
+                return false;
             }
 
             if (peSections.Count > 3)
             {
                 peSections = peSections.Where(q => q.Name.Contains("Nasha")).ToList();
             }
+
             if (peSections.Count == 3)
             {
                 context.Nasha0 = peSections[0];
                 context.Logger.Success(
-                    $"Located NashaSection {context.Nasha0.Name} With Offset {context.Nasha0.Offset}");
+                    $"Located Nasha Section {context.Nasha0.Name} With Offset {context.Nasha0.Offset}");
                 context.Nasha1 = peSections[1];
                 context.Logger.Success(
-                    $"Located NashaSection {context.Nasha1.Name} With Offset {context.Nasha1.Offset}");
+                    $"Located Nasha Section {context.Nasha1.Name} With Offset {context.Nasha1.Offset}");
                 context.Nasha2 = peSections[2];
                 context.Logger.Success(
-                    $"Located NashaSection {context.Nasha2.Name} With Offset {context.Nasha2.Offset}");
+                    $"Located Nasha Section {context.Nasha2.Name} With Offset {context.Nasha2.Offset}");
                 return true;
             }
-
-            context.Logger.Error("Could not locate any NashaVM sections!");
-            Console.ReadLine();
-            Environment.Exit(0);
             return false;
         }
     }

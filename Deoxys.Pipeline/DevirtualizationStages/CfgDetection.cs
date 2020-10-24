@@ -22,7 +22,6 @@ namespace Deoxys.Pipeline.DevirtualizationStages
                     return true;
                 }
             }
-
             return false;
         }
     }

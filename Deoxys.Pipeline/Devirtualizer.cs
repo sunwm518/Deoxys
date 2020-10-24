@@ -25,8 +25,16 @@ namespace Deoxys.Pipeline
             foreach (var stage in DevirtualizationStages)
             {
                 Ctx.Logger.Info($"Executing Devirtualization Stage {stage.Name}...");
-                stage.Execute(Ctx);
-                Ctx.Logger.Success($"Executed Devirtualization Stage {stage.Name}!");
+                bool result = stage.Execute(Ctx);
+                if (result)
+                {
+                    Ctx.Logger.Success($"Executed Devirtualization Stage {stage.Name}!");
+                }
+                else
+                {
+                    Ctx.Logger.Error($"Devirtualization Failed At Stage {stage.Name}! Aborting...");
+                    break;
+                }
             }
         }
 

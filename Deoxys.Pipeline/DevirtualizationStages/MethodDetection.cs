@@ -12,7 +12,7 @@ namespace Deoxys.Pipeline.DevirtualizationStages
         public bool Execute(DeoxysContext context)
         {
             MapMethods(context);
-            return true;
+            return context.VirtualizedMethods.Count != 0;
         }
 
         private void MapMethods(DeoxysContext context)
@@ -31,7 +31,7 @@ namespace Deoxys.Pipeline.DevirtualizationStages
                         var index = instructions.IndexOf(instructionField);
                         var methodKey = instructions[index - 1].GetLdcI4Constant();
                         context.VirtualizedMethods.Add(new DeoxysMethodInfo(method, methodKey));
-                        context.Logger.Info($"Found Virtualized Method {method.Name} With Key {methodKey}");
+                        context.Logger.Success($"Found Virtualized Method {method.Name} With Key {methodKey}");
                     }
                 }
             }
