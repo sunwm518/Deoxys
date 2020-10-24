@@ -33,8 +33,17 @@ namespace Deoxys
             var ctx = new DeoxysContext(deoxysOptions,logger);
             PrintInfo(ctx);
             var devirtualizer = new Devirtualizer(ctx);
-            devirtualizer.Devirtualize();
-            devirtualizer.Save();
+            bool result = devirtualizer.Devirtualize();
+            if (result)
+            {
+                devirtualizer.Save();
+                logger.Success("Finished Devirtualization With No Errors!");
+            }
+            else
+            {
+                logger.Error("Could not finish Devirtualization.");
+            }
+            
             Console.ReadLine();
         }
 
@@ -52,6 +61,9 @@ ______
             {
                 WriteLineMiddle(line,Color.Red);
             }
+            Console.WriteLine();
+            WriteLineMiddle($"Version - {CurrentVersion}",Color.CornflowerBlue);
+            Console.WriteLine();
             Context.Logger.Success($"Loaded file {Context.Module.Name}");
         }
 

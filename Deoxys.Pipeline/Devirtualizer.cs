@@ -20,7 +20,7 @@ namespace Deoxys.Pipeline
         public DeoxysContext Ctx { get; set; }
         public IList<IDevirtualizationStage> DevirtualizationStages { get; }
 
-        public void Devirtualize()
+        public bool Devirtualize()
         {
             foreach (var stage in DevirtualizationStages)
             {
@@ -33,9 +33,11 @@ namespace Deoxys.Pipeline
                 else
                 {
                     Ctx.Logger.Error($"Devirtualization Failed At Stage {stage.Name}! Aborting...");
-                    break;
+                    return false;
                 }
             }
+
+            return true;
         }
 
         public void Save()
