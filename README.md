@@ -11,3 +11,5 @@ Dependencies
 - [AsmResolver](https://github.com/Washi1337/AsmResolver)
 - [Colorful.Console](https://github.com/tomakita/Colorful.Console)
 - [CommandLine](https://github.com/commandlineparser/commandline)
+# Nasha
+- [NashaVM](https://github.com/Mrakovic-ORG/NashaVM/)
