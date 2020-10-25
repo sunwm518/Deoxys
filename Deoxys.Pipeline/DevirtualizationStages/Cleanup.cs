@@ -17,6 +17,7 @@ namespace Deoxys.Pipeline.DevirtualizationStages
 
         public void PurgeCtor(DeoxysContext context)
         {
+            //Clearing the .ctor
             var ctor = context.Module.GetOrCreateModuleConstructor();
             ctor.CilMethodBody = new CilMethodBody(ctor);
             ctor.CilMethodBody.Instructions.Add(new CilInstruction(CilOpCodes.Ret));
@@ -25,6 +26,7 @@ namespace Deoxys.Pipeline.DevirtualizationStages
 
         public void RemoveDLL(DeoxysContext context)
         {
+            //Removing the dll reference
             var dll = context.Cfg.Signature.FieldType.GetUnderlyingTypeDefOrRef().Scope;
             context.Module.AssemblyReferences.Remove(new AssemblyReference(dll.GetAssembly()));
             context.Logger.Success($"Successfully Removed DLL {dll.Name}");

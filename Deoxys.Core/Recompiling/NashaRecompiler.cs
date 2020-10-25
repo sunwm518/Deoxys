@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.SymbolStore;
+using System.Linq;
 using AsmResolver.DotNet.Code.Cil;
 using AsmResolver.PE.DotNet.Cil;
 
@@ -57,6 +58,10 @@ namespace Deoxys.Core.Recompiling
                             cilMethodBody.LocalVariables.Add(variable);
                         }
                         break;
+                    case CilCode.Ldarg:
+                        instruction.Operand =
+                            cilMethodBody.Owner.Parameters.GetBySignatureIndex((short) instruction.Operand);
+                        break;
                 }
             }
         }
@@ -71,8 +76,8 @@ namespace Deoxys.Core.Recompiling
                     return new CilInstruction(CilOpCodes.Ret);
                 case NashaCode.Ldstr:
                     return new CilInstruction(CilOpCodes.Ldstr,instruction.Operand);
-                case NashaCode.Ldarg_0:
-                    return new CilInstruction(CilOpCodes.Ldarg_0);
+                case NashaCode.Ldarg:
+                    return new CilInstruction(CilOpCodes.Ldarg,instruction.Operand);
                 case NashaCode.Call:
                     return new CilInstruction(CilOpCodes.Call,instruction.Operand);
                 case NashaCode.Br:
@@ -89,6 +94,20 @@ namespace Deoxys.Core.Recompiling
                     return new CilInstruction(CilOpCodes.Brtrue,instruction.Operand);
                 case NashaCode.Pop:
                     return new CilInstruction(CilOpCodes.Pop);
+                case NashaCode.Newobj:
+                    return new CilInstruction(CilOpCodes.Newobj,instruction.Operand);
+                case NashaCode.Castclass:
+                    return new CilInstruction(CilOpCodes.Castclass,instruction.Operand);
+                case NashaCode.Ldftn:
+                    return new CilInstruction(CilOpCodes.Ldftn,instruction.Operand);
+                case NashaCode.Dup:
+                    return new CilInstruction(CilOpCodes.Dup);
+                case NashaCode.Ldfld:
+                    return new CilInstruction(CilOpCodes.Ldfld,instruction.Operand);
+                case NashaCode.Stfld:
+                    return new CilInstruction(CilOpCodes.Stfld,instruction.Operand);
+                case NashaCode.Newarr:
+                    return new CilInstruction(CilOpCodes.Newarr,instruction.Operand);
             }
             return new CilInstruction(CilOpCodes.Nop);
         }

@@ -50,10 +50,15 @@ namespace Deoxys.Core.Disassembly
             {
                 case NashaCode.Ret:
                 case NashaCode.Nop:
+                case NashaCode.Dup:
                     break;
                 case NashaCode.Ldstr:
                     return Encoding.UTF8.GetString(InstructionReader.ReadBytes(InstructionReader.ReadInt32()));
                 case NashaCode.Call:
+                case NashaCode.Newobj:
+                case NashaCode.Castclass:
+                case NashaCode.Ldftn:
+                case NashaCode.Newarr:
                     InstructionReader.ReadInt16();
                     return Disassembler.Context.Module.LookupMember(InstructionReader.ReadInt32());
                 case NashaCode.BrTrue:
@@ -63,6 +68,13 @@ namespace Deoxys.Core.Disassembly
                 case NashaCode.LdcI4:
                 case NashaCode.Br:
                     return InstructionReader.ReadInt32();
+                case NashaCode.Ldarg:
+                    return InstructionReader.ReadInt16();
+                case NashaCode.Ldfld:
+                case NashaCode.Stfld:
+                    InstructionReader.ReadBoolean();
+                    InstructionReader.ReadInt16();
+                    return Disassembler.Context.Module.LookupMember(InstructionReader.ReadInt32());
             }
             return null;
         }

@@ -10,6 +10,7 @@ namespace Deoxys.Pipeline.DevirtualizationStages
 
         public bool Execute(DeoxysContext context)
         {
+            //Locating Nasha0,Nasha1,Nasha2 Sections
             var peSections = context.PeFile.Sections.Where(q =>
                 q.Name != ".text" && q.Name != ".rsrc" && q.Name != ".reloc" && q.Name.Contains("0") ||
                 q.Name.Contains("1") || q.Name.Contains("2")).ToList();

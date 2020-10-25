@@ -9,7 +9,7 @@ namespace Deoxys
 {
     internal class Program
     {
-        private static readonly Version CurrentVersion = new Version("1.0.0");
+        private static readonly Version CurrentVersion = new Version("1.0.1");
 
         public static void Main(string[] args)
         {

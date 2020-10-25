@@ -10,9 +10,10 @@ namespace Deoxys.Pipeline.DevirtualizationStages
 
         public bool Execute(DeoxysContext context)
         {
+            //Nasha injects some methods to initialize the vm
             var ctor = context.Module.GetOrCreateModuleConstructor();
             var module = ctor.DeclaringType;
-            if (module.Fields.Count >= 1 && ctor.CilMethodBody.Instructions.Count == 7)
+            if (module.Fields.Count >= 1 && ctor.CilMethodBody.Instructions.Count >= 7)
             {
                 var field = ctor.CilMethodBody.Instructions[1];
                 if (field.OpCode == CilOpCodes.Stsfld && field.Operand is FieldDefinition fieldDefinition)

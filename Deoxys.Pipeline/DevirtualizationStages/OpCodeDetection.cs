@@ -13,9 +13,7 @@ namespace Deoxys.Pipeline.DevirtualizationStages
         public string Name => nameof(OpCodeDetection);
         public bool Execute(DeoxysContext context)
         {
-            var opcodeSection = context.Nasha2;
-            var value = opcodeSection.ToArray();
-            var extractedOpCodes = ReadOpCodes(context,value);
+            var extractedOpCodes = ReadOpCodes(context,context.Nasha2.ToArray());
             if (extractedOpCodes.Count < 14)
             {
                 return false;
@@ -32,11 +30,11 @@ namespace Deoxys.Pipeline.DevirtualizationStages
             var opCodes = new List<NashaOpCode>();
             var reader = new BinaryReader(new MemoryStream(opcodeValues));
             reader.BaseStream.Position += 8;
-            
-            while (true)
+            //OpCode scrambling seems to have it's flaws.
+            while (reader.BaseStream.Position != reader.BaseStream.Length)
             {
                 var opc = ReadOpCode(reader);
-                if (opc.Code == (NashaCode) 777) // seems to be the exit code
+                if (opc.Code == (NashaCode) 777 || opc.Code == (NashaCode)1337) // seems to be the exit code
                     break;
                 opCodes.Add(opc);
                 context.Logger.Info($"Found OpCode {opc.Code} with Random Value {opc.RandomValue}");

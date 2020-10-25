@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using AsmResolver.DotNet.Builder;
+using AsmResolver.PE.DotNet.Builder;
 using Deoxys.Core;
 using Deoxys.Pipeline.DevirtualizationStages;
 

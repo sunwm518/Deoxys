@@ -26,6 +26,7 @@ namespace Deoxys.Pipeline.DevirtualizationStages
             var methodDisassembler = new NashaMethodDisassembler(context);
             foreach (var method in context.VirtualizedMethods)
             {
+                //Disassembling each method
                 nashaMethods.Add(methodDisassembler.DisassembleMethod(method));
             }
             return nashaMethods;

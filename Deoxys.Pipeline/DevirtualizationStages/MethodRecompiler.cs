@@ -17,6 +17,7 @@ namespace Deoxys.Pipeline.DevirtualizationStages
             var recompiler = new NashaRecompiler(context);
             foreach (var method in context.DisassembledVirtualizedMethods)
             {
+                //Recompiling each method
                 recompiler.RecompileMethod(method);
             }
         }
