@@ -5,3 +5,9 @@ Pretty much finished, only thing that is missing is variable type recovering, wh
 
 # Preview
 ![alt text](https://i.imgur.com/aEFdf1K.png)
+
+Dependencies
+------------
+- [AsmResolver](https://github.com/Washi1337/AsmResolver)
+- [Colorful.Console](https://github.com/tomakita/Colorful.Console)
+- [CommandLine](https://github.com/commandlineparser/commandline)
