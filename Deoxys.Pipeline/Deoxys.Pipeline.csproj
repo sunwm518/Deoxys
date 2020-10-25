@@ -55,6 +55,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="DevirtualizationStages\CfgDetection.cs" />
+        <Compile Include="DevirtualizationStages\Cleanup.cs" />
         <Compile Include="DevirtualizationStages\MethodDetection.cs" />
         <Compile Include="DevirtualizationStages\MethodDisassembly.cs" />
         <Compile Include="DevirtualizationStages\MethodRecompiler.cs" />

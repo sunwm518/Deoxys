@@ -56,6 +56,13 @@ namespace Deoxys.Core.Disassembly
                 case NashaCode.Call:
                     InstructionReader.ReadInt16();
                     return Disassembler.Context.Module.LookupMember(InstructionReader.ReadInt32());
+                case NashaCode.BrTrue:
+                case NashaCode.BrFalse:
+                case NashaCode.Stloc:
+                case NashaCode.Ldloc:
+                case NashaCode.LdcI4:
+                case NashaCode.Br:
+                    return InstructionReader.ReadInt32();
             }
             return null;
         }

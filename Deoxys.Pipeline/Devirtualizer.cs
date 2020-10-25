@@ -16,7 +16,8 @@ namespace Deoxys.Pipeline
                 new MethodDetection(),
                 new OpCodeDetection(),
                 new MethodDisassembly(),
-                new MethodRecompiler()
+                new MethodRecompiler(),
+                new Cleanup()
             };
         }
 
